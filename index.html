@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<link rel="stylesheet" href="styles.css">
+		<title>Hospital Record App</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	</head>
+	<body>
+		<h1>Hospital Record App</h1>
+		<label for="name">Patient Name: </label>
+		<input id="name" type="text">
+		
+		<label for="age_min">Age Range: </label>
+		<input id="age_min" type="number">
+		<input id="age_max" type="number">
+		
+		<label for="had_surgery">Had previous surgery? </label>
+		<input id="had_surgery" type="checkbox">
+	
+		<button type="submit">Display</button>
+	
+		<section id="results"></section>
+	
+	
+		<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+		<script src="script.js"></script>
+	
+	</body>
+</html>

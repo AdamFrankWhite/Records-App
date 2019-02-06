@@ -1,0 +1,13 @@
+h1 {
+}
+
+#age_min,
+#age_max {
+	width: 100px;
+}
+
+p {
+	display: block;
+	text-align: center;
+	background-color: skyblue;
+}
