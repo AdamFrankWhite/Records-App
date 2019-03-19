@@ -2,24 +2,44 @@
 <html>
 	<head>
 		<link rel="stylesheet" href="styles.css">
-		<title>Hospital Record App</title>
+		<title>Employee Records App</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	</head>
 	<body>
-		<h1>Hospital Record App</h1>
-		<label for="name">Patient Name: </label>
-		<input id="name" type="text">
-		
-		<label for="age_min">Age Range: </label>
-		<input id="age_min" type="number">
-		<input id="age_max" type="number">
-		
-		<label for="had_surgery">Had previous surgery? </label>
-		<input id="had_surgery" type="checkbox">
-	
-		<button type="submit">Display</button>
-	
-		<section id="results"></section>
+		<h1>Outstanding Balances App</h1>
+		<div class="wrapper">
+			<div class="menu">
+				<h2>Search</h2>
+				<div class="container">
+					<input id="search" type="text">
+          <select>
+            <option>Name</option>
+            <option>Company</option>
+            <option>Email</option>
+            <option>Phone Number</option>
+            <option>Balance</option>
+          </select>
+					<button>Search</button>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Company</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Amount Due</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="results">
+        </tbody>
+      </table>
+      
+    </div>
 	
 	
 		<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
