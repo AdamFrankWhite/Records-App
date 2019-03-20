@@ -1,38 +1,44 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
 		<link rel="stylesheet" href="styles.css">
 		<title>Employee Records App</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	</head>
 	<body>
-		<h1>Outstanding Balances App</h1>
+		<h1>Outstanding Client Payment App</h1>
 		<div class="wrapper">
 			<div class="menu">
 				<h2>Search</h2>
-				<div class="container">
-					<input id="search" type="text">
+				<div class="input">
+          <input id="search" type="text">
           <select>
+            <option value="guid">ID</option>
             <option>Name</option>
             <option>Company</option>
+            <option>Address</option>
             <option>Email</option>
             <option>Phone Number</option>
             <option>Balance</option>
           </select>
-					<button>Search</button>
-				</div>
+        </div>
+        <button>Search</button>
+        <p id="error" class="hidden">Error Message</p>
+      
 			</div>
 		</div>
 		<div class="container">
       <table>
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Company</th>
-            <th>Email</th>
-            <th>Phone Number</th>
-            <th>Amount Due</th>
-            <th></th>
+            <th class="ID">ID</th>
+            <th class="name">Name</th>
+            <th class="company">Company</th>
+            <th class="address">Address</th>
+            <th class="email">Email</th>
+            <th class="phone">Phone</th>
+            <th class="balance">Balance</th>
           </tr>
         </thead>
         <tbody id="results">
