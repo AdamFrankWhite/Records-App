@@ -1,13 +1,135 @@
-h1 {
+body {
+	font-family: Arial, sans serif;
+	background: lightgray;
+	margin: 0;
+	
 }
 
-#age_min,
-#age_max {
-	width: 100px;
-}
-
-p {
-	display: block;
+h1,
+h2 {
 	text-align: center;
-	background-color: skyblue;
+}
+
+h1 {
+	background: darkviolet;
+	padding: 1em;
+	color: white;
+	margin: 0 0;
+	
+}
+
+button {
+	width: 25%;
+	margin: auto;
+}
+
+
+.menu {
+	width: 25%;
+	background-color: white;
+	display: flex;
+	flex-direction: column;
+	margin: auto;
+	margin-top: 1em;
+	border: 2px solid black;
+	border-radius: 5px;
+}
+
+.input {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	margin: 0.5em auto;
+
+}
+
+#error {
+	display: inline-block;
+	margin: auto;
+	background-color: red;
+	color: white;
+}
+
+.input {
+	display: flex;
+	flex-direction: row;
+}
+
+
+.container {
+	width: 80%;
+	margin: auto;
+}
+
+.hidden {
+	visibility: hidden;
+}
+
+table {
+	margin: 2em auto;
+	border: 1px solid black;
+	border-radius: 5px;
+}
+
+tbody tr{
+	font-family: 'Roboto Mono', monospace;
+}
+
+tr {
+	border: 1px black solid;
+	border-radius: 5px;
+}
+
+td {
+	padding: 1em 0.5em;
+	text-align: center;
+}
+
+th {
+	background-color: black;
+	padding: 0.5em;
+	color: white;
+}
+
+tr:nth-of-type(2n+1) {
+	background-color: slategray;
+	color: white;
+}
+
+tr:nth-of-type(2n+2) {
+	background-color: darkgray;
+	color: white;
+}
+
+/* ==== Cell Widths ==== */
+
+.ID {
+	width: 20px;
+}
+
+.name {
+	min-width: 140px;
+	width: fit-content;
+}
+
+.company {
+	width: 80px;
+}
+
+.address {
+	width: 300px;
+}
+
+.email {
+	width: 180px;
+}
+
+.phone {
+	width: 180px;
+	
+	
+}
+
+.balance {
+	width: 80px;
 }
