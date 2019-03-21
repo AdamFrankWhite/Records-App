@@ -15,7 +15,11 @@ h1 {
 	padding: 1em;
 	color: white;
 	margin: 0 0;
-	
+	box-shadow: 1px 1px 1px 1px black;
+}
+
+h2 {
+	margin-bottom: 0.2em;
 }
 
 button {
@@ -30,7 +34,7 @@ button {
 	display: flex;
 	flex-direction: column;
 	margin: auto;
-	margin-top: 1em;
+	margin-top: 40px;
 	border: 2px solid black;
 	border-radius: 5px;
 }
@@ -39,15 +43,39 @@ button {
 	display: flex;
 	justify-content: center;
 	width: 100%;
-	margin: 0.5em auto;
+	margin: 0.75em auto;
 
+}
+
+.info {
+	text-align: center;
+	font-size: 0.75em;
+	margin: 0 auto;
 }
 
 #error {
 	display: inline-block;
-	margin: auto;
-	background-color: red;
-	color: white;
+	visibility: hidden;
+	margin: 0.25em;
+	height: 50px;	/* Set height to maintain .menu div shape on load */
+}
+
+.emptyField,
+.noResults
+ {
+	width: 70%;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto; /* user agent stylesheet workaround - or could use css reset */
+	font-weight: bold;
+}
+
+.emptyField {
+	color: red;	
+}
+
+.noResults {
+	color: orange;
 }
 
 .input {
@@ -61,12 +89,8 @@ button {
 	margin: auto;
 }
 
-.hidden {
-	visibility: hidden;
-}
-
 table {
-	margin: 2em auto;
+	margin: 40px auto;
 	border: 1px solid black;
 	border-radius: 5px;
 }
@@ -83,6 +107,10 @@ tr {
 td {
 	padding: 1em 0.5em;
 	text-align: center;
+}
+
+td:hover {
+	cursor: pointer;
 }
 
 th {
