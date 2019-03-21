@@ -4,7 +4,7 @@ var data;
 
 // ==== AJAX call ====
 
-const $request = $.ajax({url: "http://www.json-generator.com/api/json/get/bPZDYpeDiq?indent=2", success: function(result){
+const $request = $.ajax({url: "http://www.json-generator.com/api/json/get/coSwXiWUky?indent=2", success: function(result){
     data = result; // assign results to variable
     console.log(data)
   }});
@@ -19,20 +19,9 @@ function hideError () {
   $('#error').css({'visibility':'hidden'});
 }
 
-function searchRecords () {
-  var search = $('#search').val();
-  if (search.length > 0) { // validate
-    var searchType = $('select').val().toLowerCase();
-    var match = false;
-    hideError();
-    // empty table for each search
-    $('#results').empty(); 
-    for (let i=0; i<data.length; i++) {
-      var person = data[i];
-      if (person[searchType].toLowerCase().includes(search)) { // searches for partial match
-        // append row to table
-        let personID = person.guid.substring(0,2);
-        $('#results').append(`
+function appendResults(person) {
+  let personID = person.guid.substring(0,2);
+  $('#results').append(`
           <tr>
             <td>${personID}.</td>
             <td>${person.name}</td>
@@ -42,21 +31,46 @@ function searchRecords () {
             <td>${person.phone}</td>
             <td>${person.balance}</td>
           </tr>`) 
-        match = true;
+}
+
+function searchRecords () {
+  var search = $('#search').val().toLowerCase();
+  if (search.length > 0) { // validate
+    var searchType = $('select').val().toLowerCase();
+    var match = false;
+    hideError();
+    
+     
+    if (search=="all") {
+      // empty table for each search (moved inside if statements to ensure only empty on successful search"
+      $('#results').empty(); 
+      match=true;
+      for (let i=0; i<data.length; i++) {
+        var person = data[i];
+        appendResults(person);
+      }
+    } else {
+      $('#results').empty();
       
-      } 
+      for (let i=0; i<data.length; i++) {
+        var person = data[i];
+        if (person[searchType].toLowerCase().includes(search)) { // searches for partial match
+          // append row to table
+          appendResults(person);
+          match = true;      
+        }
+      }
+    }      
         
     if (match==false) {
       showError();
-      $('#error').html('<p>No results. Please try again</p>');
+      $('#error').html('<p class="noResults">No results. Please try again</p>');
     }      
       
             
-    }
-  
-  } else {
+    } else {
     showError();
-    $('#error').html('<p>Please enter a search term</p>'); // .html over append as you want to overwrite content, not add
+    $('#error').html('<p class="emptyField">Please enter a search term</p>'); // .html over append as you want to overwrite content, not add
   }
 } 
 
