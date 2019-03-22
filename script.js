@@ -81,16 +81,15 @@ $('#search-btn').on('click', function () {
   searchRecords();  
 }) 
 
+// Cell hover
+
+$(document).on("mouseenter", "td", function(e) {
+	$(this).css("background","orange");
+});
+
+$(document).on("mouseleave", "td", function(e) {
+	$(this).css("background","");
+});
+
 // Copy command - TO COMPLETE
-
-$('#results').on('click', '.copy', function (event) { // need to select parent container, then use target class as parameter, since you are working with dynamic content
-
-  // var result = getElementsByTagName('tr')[event.target];
-  $query = $(event.target).parent()[0]
-  $query.select();
-  document.execCommand('copy')
-  
-}) 
-
-
 
