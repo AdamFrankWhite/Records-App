@@ -30,6 +30,7 @@ function appendResults(person) {
             <td>${person.email}</td>
             <td>${person.phone}</td>
             <td>${person.balance}</td>
+						<td class="copy"><img src="copy.jpg"></td>
           </tr>`) 
 }
 
@@ -91,5 +92,20 @@ $(document).on("mouseleave", "td", function(e) {
 	$(this).css("background","");
 });
 
+//Highlight row
+
+$(document).on("mouseenter", ".copy", function(e) {
+	$(this).parent().css("background", "orange");
+	$(this).css("background","orange");
+});
+
+$(document).on("mouseleave", ".copy", function(e) {
+	$(this).parent().css("background", "");
+	$(this).css("background","");
+});
+
 // Copy command - TO COMPLETE
+// on click mouse says copied, if copied row, will need to write template string
+
+
 
