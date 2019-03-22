@@ -40,7 +40,7 @@ function searchRecords () {
     var match = false;
     hideError();
     
-     
+    // SHOW ALL RESULTS 
     if (search=="all") {
       // empty table for each search (moved inside if statements to ensure only empty on successful search"
       $('#results').empty(); 
@@ -49,6 +49,7 @@ function searchRecords () {
         var person = data[i];
         appendResults(person);
       }
+			// SHOW SEARCH RESULTS
     } else {
       $('#results').empty();
       
@@ -57,7 +58,7 @@ function searchRecords () {
         if (person[searchType].toLowerCase().includes(search)) { // searches for partial match
           // append row to table
           appendResults(person);
-          match = true;      
+          match = true; //       
         }
       }
     }      
@@ -68,7 +69,7 @@ function searchRecords () {
     }      
       
             
-    } else {
+  } else {
     showError();
     $('#error').html('<p class="emptyField">Please enter a search term</p>'); // .html over append as you want to overwrite content, not add
   }
@@ -76,12 +77,11 @@ function searchRecords () {
 
 // ==== Event Listeners ====
 
-
-$('button').on('click', function () {
+$('#search-btn').on('click', function () {
   searchRecords();  
 }) 
 
-// Copy command
+// Copy command - TO COMPLETE
 
 $('#results').on('click', '.copy', function (event) { // need to select parent container, then use target class as parameter, since you are working with dynamic content
 

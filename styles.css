@@ -1,3 +1,5 @@
+/* ==== Elements ==== */
+
 body {
 	font-family: Arial, sans serif;
 	background: lightgray;
@@ -5,12 +7,8 @@ body {
 	
 }
 
-h1,
-h2 {
-	text-align: center;
-}
-
 h1 {
+	text-align: center;
 	background: darkviolet;
 	padding: 1em;
 	color: white;
@@ -19,6 +17,7 @@ h1 {
 }
 
 h2 {
+	text-align: center;
 	margin-bottom: 0.2em;
 }
 
@@ -27,6 +26,16 @@ button {
 	margin: auto;
 }
 
+/* === IDs === */
+
+#error {
+	display: inline-block;
+	visibility: hidden;
+	margin: 0.25em;
+	height: 50px;	/* Set height to maintain .menu div shape on load */
+}
+
+/* === Classes === */
 
 .menu {
 	width: 25%;
@@ -49,16 +58,11 @@ button {
 }
 
 .info {
+	display: flex;
+	flex-direction: row;
 	text-align: center;
 	font-size: 0.75em;
 	margin: 0 auto;
-}
-
-#error {
-	display: inline-block;
-	visibility: hidden;
-	margin: 0.25em;
-	height: 50px;	/* Set height to maintain .menu div shape on load */
 }
 
 .emptyField,
@@ -79,21 +83,23 @@ button {
 	color: orange;
 }
 
-.input {
-	display: flex;
-	flex-direction: row;
-}
-
-
 .container {
 	width: 80%;
 	margin: auto;
 }
 
+/* === Table elements ==== */
+
 table {
 	margin: 40px auto;
 	border: 1px solid black;
 	border-radius: 5px;
+}
+
+th {
+	background-color: black;
+	padding: 0.5em;
+	color: white;
 }
 
 tbody tr{
@@ -105,20 +111,6 @@ tr {
 	border-radius: 5px;
 }
 
-td {
-	padding: 1em 0.5em;
-	text-align: center;
-}
-
-td:hover {
-	cursor: pointer;
-}
-
-th {
-	background-color: black;
-	padding: 0.5em;
-	color: white;
-}
 
 tr:nth-of-type(2n+1) {
 	background-color: slategray;
@@ -128,6 +120,15 @@ tr:nth-of-type(2n+1) {
 tr:nth-of-type(2n+2) {
 	background-color: darkgray;
 	color: white;
+}
+
+td {
+	padding: 1em 0.5em;
+	text-align: center;
+}
+
+td:hover {
+	cursor: pointer;
 }
 
 /* ==== Cell Widths ==== */
@@ -155,19 +156,19 @@ tr:nth-of-type(2n+2) {
 
 .phone {
 	width: 180px;
-	
-	
 }
 
 .balance {
 	width: 80px;
 }
 
+/* ==== Media Queries ==== */
+
 @media 
 only screen and (max-width: 760px),
 (min-device-width: 768px) and (max-device-width: 1024px)  {
 
-	/* Force table to not be like tables anymore */
+	/* Force table to display one cell across */
 	table, thead, tbody, th, td, tr { 
 		display: block; 
 	}
@@ -179,25 +180,16 @@ only screen and (max-width: 760px),
 		left: -9999px;
 	}
 	
-	tr { border: 1px solid #ccc; }
+	tr { 
+		border: 1px solid #ccc; 
+	}
 	
 	td { 
 		/* Behave  like a "row" */
 		border: none;
 		border-bottom: 1px solid #eee; 
 		position: relative;
-		/* padding-left: 50%;  */
 		text-align: center;
 	}
 	
-	td:before { 
-		/* Now like a table header */
-		position: absolute;
-		/* Top/left values mimic padding */
-		top: 6px;
-		left: 6px;
-		width: 45%; 
-		padding-right: 10px; 
-		white-space: nowrap;
-	}
-	
+}
