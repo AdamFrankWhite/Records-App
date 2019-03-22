@@ -84,7 +84,7 @@ button {
 }
 
 .container {
-	width: 80%;
+	width: 90%;
 	margin: auto;
 }
 
@@ -160,6 +160,10 @@ td:hover {
 
 .balance {
 	width: 80px;
+}
+
+.copyCell {
+	width: 56px;
 }
 
 /* ==== Media Queries ==== */

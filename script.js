@@ -30,7 +30,7 @@ function appendResults(person) {
             <td>${person.email}</td>
             <td>${person.phone}</td>
             <td>${person.balance}</td>
-						<td class="copy"><img src="copy.jpg"></td>
+						<td class="copy"><img src="images/copy.jpg" style="width:20px"></td>
           </tr>`) 
 }
 
@@ -84,7 +84,7 @@ $('#search-btn').on('click', function () {
 
 // Cell hover
 
-$(document).on("mouseenter", "td", function(e) {
+$(document).on("mouseenter", "td", function(e) { // need to use document as listening for dynamic element
 	$(this).css("background","orange");
 });
 
