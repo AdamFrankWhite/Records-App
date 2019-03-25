@@ -4,7 +4,7 @@ var data;
 
 // ==== AJAX call ====
 
-const $request = $.ajax({url: "http://www.json-generator.com/api/json/get/coSwXiWUky?indent=2", success: function(result){
+const $request = $.ajax({url: "https://www.json-generator.com/api/json/get/coSwXiWUky?indent=2", success: function(result){
     data = result; // assign results to variable
     console.log(data)
   }});
