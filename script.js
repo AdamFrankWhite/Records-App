@@ -102,9 +102,33 @@ $(document).on("mouseenter", ".copy", function(e) {
 $(document).on("mouseleave", ".copy", function(e) {
 	$(this).parent().css("background", "");
 	$(this).css("background","");
+
 });
 
-// Copy command - TO COMPLETE
+// Copy command 
+
+$(document).on("click", ".copy", function () {
+	let tempElement = $('<textarea style="opacity:0;"></textarea>');
+  let parent = $(this).closest('td').siblings().each(function(){
+    tempElement.text(tempElement.text() + $(this).text() + '\t'); // adds each cell with a tab to textarea
+  });
+  
+  tempElement.appendTo($('body')).select()); // selects textarea text??
+  document.execCommand("copy");
+  tempElement.remove();
+	
+	// from Stackoverflow - creates temporary textarea, adds text of all siblings, copies text, then removes textarea
+})
+
+// "copied to clipboard" event
+
+$(document).on("click", ".copy", function () {
+	$(this).parent().effect("highlight", {"color": "black"}, 1000)
+	$(this).effect("highlight", {"color": "black"}, 1000)
+	$(this).parent().css("background", "");
+	
+});
+
 // on click mouse says copied, if copied row, will need to write template string
 
 

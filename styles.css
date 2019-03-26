@@ -88,6 +88,12 @@ button {
 	margin: auto;
 }
 
+.copied {
+	position: relative;
+	margin: auto;
+	font-size: 0.75em;
+}
+
 /* === Table elements ==== */
 
 table {
