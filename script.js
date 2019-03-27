@@ -113,7 +113,7 @@ $(document).on("click", ".copy", function () {
     tempElement.text(tempElement.text() + $(this).text() + '\t'); // adds each cell with a tab to textarea
   });
   
-  tempElement.appendTo($('body')).select()); // selects textarea text??
+  tempElement.appendTo($('body')).select(); // selects textarea text??
   document.execCommand("copy");
   tempElement.remove();
 	
