@@ -102,12 +102,14 @@ $(document).on("mouseenter", ".copy", function(e) {
 $(document).on("mouseleave", ".copy", function(e) {
 	$(this).parent().css("background", "");
 	$(this).css("background","");
+	$(this).stop(); 
+	$(this).parent().stop(); // ensures background reverts if mouseleave before copy animation finishes
 
 });
 
 // Copy command 
 
-$(document).on("click", ".copy", function () {
+$(document).on("click", ".copy td", function () {
 	let tempElement = $('<textarea style="opacity:0;"></textarea>');
   let parent = $(this).closest('td').siblings().each(function(){
     tempElement.text(tempElement.text() + $(this).text() + '\t'); // adds each cell with a tab to textarea
@@ -123,8 +125,8 @@ $(document).on("click", ".copy", function () {
 // "copied to clipboard" event
 
 $(document).on("click", ".copy", function () {
-	$(this).parent().effect("highlight", {"color": "black"}, 1000)
-	$(this).effect("highlight", {"color": "black"}, 1000)
+	$(this).parent().effect("highlight", {"color": "black"}, 1000) // highlight row
+	$(this).effect("highlight", {"color": "black"}, 1000) // highlight copy cell
 	$(this).parent().css("background", "");
 	
 });
