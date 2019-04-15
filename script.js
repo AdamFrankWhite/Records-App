@@ -31,7 +31,7 @@ function appendResults(person) {
             <td>${person.phone}</td>
             <td>${person.balance}</td>
 						<td class="copy"><img src="images/copy.jpg" style="width:20px"></td>
-          </tr>`) 
+          </tr>`)
 }
 
 function searchRecords () {
@@ -40,11 +40,11 @@ function searchRecords () {
     var searchType = $('select').val().toLowerCase();
     var match = false;
     hideError();
-    
-    // SHOW ALL RESULTS 
+
+    // SHOW ALL RESULTS
     if (search=="all") {
       // empty table for each search (moved inside if statements to ensure only empty on successful search"
-      $('#results').empty(); 
+      $('#results').empty();
       match=true;
       for (let i=0; i<data.length; i++) {
         var person = data[i];
@@ -53,34 +53,34 @@ function searchRecords () {
 			// SHOW SEARCH RESULTS
     } else {
       $('#results').empty();
-      
+
       for (let i=0; i<data.length; i++) {
         var person = data[i];
         if (person[searchType].toLowerCase().includes(search)) { // searches for partial match
           // append row to table
           appendResults(person);
-          match = true; //       
+          match = true; //
         }
       }
-    }      
-        
+    }
+
     if (match==false) {
       showError();
       $('#error').html('<p class="noResults">No results. Please try again</p>');
-    }      
-      
-            
+    }
+
+
   } else {
     showError();
     $('#error').html('<p class="emptyField">Please enter a search term</p>'); // .html over append as you want to overwrite content, not add
   }
-} 
+}
 
 // ==== Event Listeners ====
 
 $('#search-btn').on('click', function () {
-  searchRecords();  
-}) 
+  searchRecords();
+})
 
 // Cell hover
 
@@ -102,34 +102,35 @@ $(document).on("mouseenter", ".copy", function(e) {
 $(document).on("mouseleave", ".copy", function(e) {
 	$(this).parent().css("background", "");
 	$(this).css("background","");
-	$(this).stop(); 
+	$(this).stop();
 	$(this).parent().stop(); // ensures background reverts if mouseleave before copy animation finishes
 
 });
 
-// Copy command 
+// Copy command
 
-$(document).on("click", ".copy td", function () {
+$(document).on("click", ".copy", function () {
 	let tempElement = $('<textarea style="opacity:0;"></textarea>');
   let parent = $(this).closest('td').siblings().each(function(){
     tempElement.text(tempElement.text() + $(this).text() + '\t'); // adds each cell with a tab to textarea
   });
-  
+
   tempElement.appendTo($('body')).select(); // selects textarea text??
   document.execCommand("copy");
+  console.log("boo")
   tempElement.remove();
-	
-	// from Stackoverflow - creates temporary textarea, adds text of all siblings, copies text, then removes textarea
+
+  //highlight row on click
+  $(this).parent().effect("highlight", {"color": "black"}, 1000) // highlight row
+	$(this).effect("highlight", {"color": "black"}, 1000) // highlight copy cell
+	$(this).parent().css("background", "");
+
+	// modified from Stackoverflow - creates temporary textarea, adds text of all siblings, copies text, then removes textarea
 })
 
 // "copied to clipboard" event
 
-$(document).on("click", ".copy", function () {
-	$(this).parent().effect("highlight", {"color": "black"}, 1000) // highlight row
-	$(this).effect("highlight", {"color": "black"}, 1000) // highlight copy cell
-	$(this).parent().css("background", "");
-	
-});
+
 
 // on click mouse says copied, if copied row, will need to write template string
 
@@ -140,4 +141,3 @@ $(document).on("click", ".copy", function () {
 	// let results = people.sort(function(a,b){return a-b})
 	// console.log(people);
 // });
-
