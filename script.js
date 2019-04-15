@@ -22,7 +22,7 @@ function hideError () {
 function appendResults(person) {
   let personID = person.guid.substring(0,2);
   $('#results').append(`
-          <tr>
+          <tr class="output">
             <td>${personID}.</td>
             <td>${person.name}</td>
             <td>${person.company}</td>
@@ -133,5 +133,11 @@ $(document).on("click", ".copy", function () {
 
 // on click mouse says copied, if copied row, will need to write template string
 
+// sort column
 
+// $(document).on("click", "th", function() {
+	// let people = document.getElementsByClassName('output');
+	// let results = people.sort(function(a,b){return a-b})
+	// console.log(people);
+// });
 

@@ -108,6 +108,10 @@ th {
 	color: white;
 }
 
+th:hover {
+	cursor: pointer;
+}
+
 tbody tr{
 	font-family: 'Roboto Mono', monospace;
 }
