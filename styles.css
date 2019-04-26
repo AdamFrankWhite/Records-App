@@ -1,7 +1,7 @@
 /* ==== Elements ==== */
 
 body {
-	font-family: Arial, sans serif;
+	font-family: "Robot Mono", Arial, sans serif;
 	background: lightgray;
 	margin: 0;
 	
@@ -9,11 +9,13 @@ body {
 
 h1 {
 	text-align: center;
-	background: darkviolet;
+	background-image: linear-gradient(darkviolet, black);
 	padding: 1em;
 	color: white;
 	margin: 0 0;
-	box-shadow: 1px 1px 1px 1px black;
+	box-shadow: 1px 1px 4px black;
+	text-shadow: 2px 2px 2px black;
+		letter-spacing: 0.07em;
 }
 
 h2 {
