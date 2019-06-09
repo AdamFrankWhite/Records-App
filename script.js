@@ -3,7 +3,18 @@
 var data;
 var tableHeaders = document.getElementsByTagName("th");
 var rows = []
-let asc = false; // sort control
+
+// sort controls
+let sortCtrl = {
+	id: false,
+	name: false,
+	company: false,
+	address: false,
+	email: false,
+	phone: false,
+	balance: false,	
+}; 
+
 // ==== AJAX call ====
 
 const $request = $.ajax({
@@ -116,14 +127,20 @@ $(document).on("mouseleave", ".copy", function(e) {
 
 // sort function
 $('th > img').on('click', function(e){
-	let heading = e.target.parentNode.textContent.toLowerCase()
-	console.log(rows)
-	if (asc == false) {
+	let heading = e.target.parentNode.textContent.toLowerCase() // selects th text
+	if (sortCtrl[heading] == false) {
 		ascSort(heading)
-		asc = true;
+		// controls asc/des settings
+		for (const key in sortCtrl){
+			console.log(sortCtrl[key])
+			if (sortCtrl[heading]) {
+				sortCtrl[key] = false;
+			} 
+		}
+		sortCtrl[heading] = true; 
 	} else {
 		descSort(heading)
-		asc = false;
+		sortCtrl[heading] = false;
 	}		
 });
 
