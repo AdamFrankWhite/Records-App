@@ -3,6 +3,7 @@
 var data;
 var tableHeaders = document.getElementsByTagName("th");
 var rows = []
+let asc = false; // sort control
 // ==== AJAX call ====
 
 const $request = $.ajax({
@@ -114,14 +115,30 @@ $(document).on("mouseleave", ".copy", function(e) {
 
 
 // sort function
-$('th').on('click', function(e){
-	let heading = e.target.textContent.toLowerCase()
+$('th > img').on('click', function(e){
+	let heading = e.target.parentNode.textContent.toLowerCase()
 	console.log(rows)
-	ascDescSort(heading)		
+	if (asc == false) {
+		ascSort(heading)
+		asc = true;
+	} else {
+		descSort(heading)
+		asc = false;
+	}		
 });
 
-function ascDescSort(heading){
+function ascSort(heading){
 	rows.sort((a,b) => a[heading] < b[heading] ? -1 : +1)
+	$('#results').empty();
+	for (let i=0; i<rows.length; i++){
+		appendResults(rows[i]);
+	}
+	
+}
+
+function descSort(heading){
+	console.log("bah")
+	rows.sort((a,b) => a[heading] > b[heading] ? -1 : +1)
 	$('#results').empty();
 	for (let i=0; i<rows.length; i++){
 		appendResults(rows[i]);
