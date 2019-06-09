@@ -107,6 +107,7 @@ $(document).on("mouseenter", "td", function(e) { // need to use document as list
 
 $(document).on("mouseleave", "td", function(e) {
 	$(this).css("background","");
+	$(this).stop();
 });
 
 //Highlight row
@@ -173,27 +174,31 @@ $(document).on("click", ".copy", function () {
 
   tempElement.appendTo($('body')).select(); // selects textarea text??
   document.execCommand("copy");
-  console.log("boo")
   tempElement.remove();
 
   //highlight row on click
-  $(this).parent().effect("highlight", {"color": "black"}, 1000) // highlight row
-	$(this).effect("highlight", {"color": "black"}, 1000) // highlight copy cell
+  $(this).parent().effect("highlight", {"color": "black"}, 500) // highlight row
+	$(this).effect("highlight", {"color": "black"}, 500) // highlight copy cell
 	$(this).parent().css("background", "");
 
 	// modified from Stackoverflow - creates temporary textarea, adds text of all siblings, copies text, then removes textarea
 })
 
-// "copied to clipboard" event
+
+// copy cell event
+$(document).on("click", "td", function(e) {
+	let tempElement = $('<textarea style="opacity:0;"></textarea>');
+  let copyText = e.target.textContent
+	tempElement.text(copyText);
+  tempElement.appendTo($('body')).select(); 
+  document.execCommand("copy");
+  tempElement.remove();
+	if ($(e.target).hasClass("copy") == false) { // ensures copy icon doesn't animate twice
+		$(this).effect("highlight", {"color": "black"}, 300) // highlight row
+		$(this).css("background", "");
+	}
+	
+	
+})
 
 
-
-// on click mouse says copied, if copied row, will need to write template string
-
-// sort column
-
-// $(document).on("click", "th", function() {
-	// let people = document.getElementsByClassName('output');
-	// let results = people.sort(function(a,b){return a-b})
-	// console.log(people);
-// });
