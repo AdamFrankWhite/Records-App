@@ -1,13 +1,14 @@
 // ==== Variables =====
 
 var data;
-
+var tableHeaders = document.getElementsByTagName("th");
+var rows = []
 // ==== AJAX call ====
 
-const $request = $.ajax({url: "https://www.json-generator.com/api/json/get/coSwXiWUky?indent=2", success: function(result){
-    data = result; // assign results to variable
-    console.log(data)
-  }});
+const $request = $.ajax({
+	url: "https://www.json-generator.com/api/json/get/coSwXiWUky?indent=2", 
+	success: function(result){data = result;} // assign results to variable
+});
 
 // ==== Functions ====
 
@@ -20,6 +21,7 @@ function hideError () {
 }
 
 function appendResults(person) {
+	
   let personID = person.guid.substring(0,2);
   $('#results').append(`
           <tr class="output">
@@ -40,7 +42,7 @@ function searchRecords () {
     var searchType = $('select').val().toLowerCase();
     var match = false;
     hideError();
-
+		rows = [] // reset search results store
     // SHOW ALL RESULTS
     if (search=="all") {
       // empty table for each search (moved inside if statements to ensure only empty on successful search"
@@ -49,6 +51,7 @@ function searchRecords () {
       for (let i=0; i<data.length; i++) {
         var person = data[i];
         appendResults(person);
+				rows.push(person) // clears rows array and adds search result value
       }
 			// SHOW SEARCH RESULTS
     } else {
@@ -59,9 +62,11 @@ function searchRecords () {
         if (person[searchType].toLowerCase().includes(search)) { // searches for partial match
           // append row to table
           appendResults(person);
+					rows.push(person) // clears rows array and adds search result value
           match = true; //
         }
       }
+			
     }
 
     if (match==false) {
@@ -106,6 +111,23 @@ $(document).on("mouseleave", ".copy", function(e) {
 	$(this).parent().stop(); // ensures background reverts if mouseleave before copy animation finishes
 
 });
+
+
+// sort function
+$('th').on('click', function(e){
+	let heading = e.target.textContent.toLowerCase()
+	console.log(rows)
+	ascDescSort(heading)		
+});
+
+function ascDescSort(heading){
+	rows.sort((a,b) => a[heading] < b[heading] ? -1 : +1)
+	$('#results').empty();
+	for (let i=0; i<rows.length; i++){
+		appendResults(rows[i]);
+	}
+	
+}
 
 // Copy command
 
