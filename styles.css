@@ -28,6 +28,12 @@ button {
 	margin: auto;
 }
 
+thead img {
+	width: 18px;
+	height: auto;
+	float: right;
+}
+
 /* === IDs === */
 
 #error {
@@ -146,7 +152,7 @@ td:hover {
 /* ==== Cell Widths ==== */
 
 .ID {
-	width: 20px;
+	width: 60px;
 }
 
 .name {
@@ -155,11 +161,11 @@ td:hover {
 }
 
 .company {
-	width: 80px;
+	width: 120px;
 }
 
 .address {
-	width: 300px;
+	width: 350px;
 }
 
 .email {
@@ -171,7 +177,7 @@ td:hover {
 }
 
 .balance {
-	width: 80px;
+	width: 100px;
 }
 
 .copyCell {
