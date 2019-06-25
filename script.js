@@ -132,12 +132,6 @@ $('th > img').on('click', function(e){
 	if (sortCtrl[heading] == false) {
 		ascSort(heading)
 		// controls asc/des settings
-		for (const key in sortCtrl){
-			console.log(sortCtrl[key])
-			if (sortCtrl[heading]) {
-				sortCtrl[key] = false;
-			} 
-		}
 		sortCtrl[heading] = true; 
 	} else {
 		descSort(heading)
@@ -178,7 +172,6 @@ $(document).on("click", ".copy", function () {
 
   //highlight row on click
   $(this).parent().effect("highlight", {"color": "black"}, 500) // highlight row
-	$(this).effect("highlight", {"color": "black"}, 500) // highlight copy cell
 	$(this).parent().css("background", "");
 
 	// modified from Stackoverflow - creates temporary textarea, adds text of all siblings, copies text, then removes textarea
@@ -193,7 +186,7 @@ $(document).on("click", "td", function(e) {
   tempElement.appendTo($('body')).select(); 
   document.execCommand("copy");
   tempElement.remove();
-	if ($(e.target).hasClass("copy") == false) { // ensures copy icon doesn't animate twice
+	if (!$(e.target).hasClass("copy")) { // ensures copy icon doesn't animate twice
 		$(this).effect("highlight", {"color": "black"}, 300) // highlight row
 		$(this).css("background", "");
 	}
